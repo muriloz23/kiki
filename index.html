@@ -60,9 +60,9 @@
 </head>
 <body>
 
-<h1>Você acha o Murilinho legal?</h1>
+<h1>Você acha o Murilo bonito?</h1>
 <button id="sim">Sim</button>
-<button id="nao">Não</button>
+<button id="nao" onclick="mostrarMensagem()">Não</button>
 
 <script>
     var moveCount = 1;
@@ -73,6 +73,10 @@
         moveCount = moveCount % 4 + 1; // Troca para o próximo movimento
         simButton.classList.add('move' + moveCount);
     });
+
+    function mostrarMensagem() {
+        alert('é o que todos dizem... adeus mundo cruel:(');
+    }
 </script>
 
 </body>
