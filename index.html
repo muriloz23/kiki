@@ -8,11 +8,27 @@
     body, html {
         height: 100%;
         margin: 0;
+        overflow: hidden;
+    }
+
+    #video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    #content {
+        position: relative;
+        z-index: 1;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        position: relative;
+        height: 100%;
     }
 
     h1 {
@@ -29,55 +45,46 @@
 
     #sim {
         top: calc(50% + 50px);
-        left: calc(50% - 50px);
+        left: calc(50% - 100px);
     }
 
     #nao {
         top: calc(50% + 50px);
         left: calc(50% + 50px);
     }
-
-    #sim.move1 {
-        top: 10px;
-        left: 10px;
-    }
-
-    #sim.move2 {
-        top: calc(100% - 60px);
-        left: calc(100% - 110px);
-    }
-
-    #sim.move3 {
-        top: calc(100% - 60px);
-        left: 10px;
-    }
-
-    #sim.move4 {
-        top: 10px;
-        left: calc(100% - 110px);
-    }
 </style>
 </head>
 <body>
 
-<h1>Você acha o Murilo bonito?</h1>
-<button id="sim">Sim</button>
-<button id="nao" onclick="mostrarMensagem()">Não</button>
+    <video id="video-bg" autoplay muted loop>
+        <source src="https://cdn.discordapp.com/attachments/1233570858908389497/1233990395118227496/SnapInsta.io_3355851295507053195.mp4?ex=662f1a9c&is=662dc91c&hm=c780d289d18ec117a281ef3947ef277404046d6cb8c1cff83b35f5bb8895716a&" type="video/mp4">
+    </video>
 
-<script>
-    var moveCount = 1;
+    <div id="content">
+        <h1>Essa menina no fundo é perfeita e maravilhosa? </h1>
+        <button id="sim" onclick="mostrarMensagem()">Sim</button>
+        <button id="nao" onmouseover="moverBotaoNao()">Não</button>
+    </div>
 
-    document.getElementById('sim').addEventListener('mouseenter', function() {
-        var simButton = document.getElementById('sim');
-        simButton.classList.remove('move' + moveCount);
-        moveCount = moveCount % 4 + 1; // Troca para o próximo movimento
-        simButton.classList.add('move' + moveCount);
-    });
+    <script>
+        function mostrarMensagem() {
+            alert('é né?:D');
+        }
 
-    function mostrarMensagem() {
-        alert('é o que todos dizem... adeus mundo cruel:(');
-    }
-</script>
+        var naoButton = document.getElementById('nao');
 
+        function moverBotaoNao() {
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+            var buttonWidth = naoButton.offsetWidth;
+            var buttonHeight = naoButton.offsetHeight;
+
+            var randomX = Math.random() * (windowWidth - buttonWidth);
+            var randomY = Math.random() * (windowHeight - buttonHeight);
+
+            naoButton.style.left = randomX + 'px';
+            naoButton.style.top = randomY + 'px';
+        }
+    </script>
 </body>
 </html>
