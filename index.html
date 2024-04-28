@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pra kiki</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+        position: absolute;
+    }
+
+    #sim {
+        top: calc(50% + 50px);
+        left: calc(50% - 50px);
+    }
+
+    #nao {
+        top: calc(50% + 50px);
+        left: calc(50% + 50px);
+    }
+
+    #sim.move1 {
+        top: 10px;
+        left: 10px;
+    }
+
+    #sim.move2 {
+        top: calc(100% - 60px);
+        left: calc(100% - 110px);
+    }
+
+    #sim.move3 {
+        top: calc(100% - 60px);
+        left: 10px;
+    }
+
+    #sim.move4 {
+        top: 10px;
+        left: calc(100% - 110px);
+    }
+</style>
+</head>
+<body>
+
+<h1>Você acha o murilinho bunito?</h1>
+<button id="sim">Sim</button>
+<button id="nao">Não</button>
+
+<script>
+    var moveCount = 1;
+
+    document.getElementById('sim').addEventListener('mouseenter', function() {
+        var simButton = document.getElementById('sim');
+        simButton.classList.remove('move' + moveCount);
+        moveCount = moveCount % 4 + 1; // Troca para o próximo movimento
+        simButton.classList.add('move' + moveCount);
+    });
+</script>
+
+</body>
+</html>
